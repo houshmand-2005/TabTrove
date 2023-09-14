@@ -15,7 +15,7 @@
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Browsers Notes](#browsers-notes)
-- [Supported Browsers](#supported_browsers)
+- [Supported Browsers](#supported-browsers)
 
 ## Description
 
