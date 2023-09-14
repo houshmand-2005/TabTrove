@@ -1,5 +1,5 @@
 <p align="center">
-      <img width="150" height="150" src="logo.png">
+      <img width="140" height="140" src="readme_files/logo.jpg">
 </p>
 <h1 align="center"/>TabTrove</h1>
 <p align="center">
@@ -101,6 +101,10 @@ linux:
 
 There is no limit to open tabs in other browsers, and you can add the executable file of your favorite browser to the [config](#configuration) and open tabs inside it.
 But for reading open tabs and saving them, only **Firefox** browser is currently supported.
+<br>
+Other browsers don't make their session files easily available and sometimes they encrypt them, so it takes a lot of time to support the rest of the browsers.
 
 <hr>
-Other browsers don't make their session files easily available and sometimes they encrypt them, so it takes a lot of time to support the rest of the browsers.
+<div align="center">
+<img src="readme_files/tabtrove.gif" width="710" height="380"/>
+</div>
