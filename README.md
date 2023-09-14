@@ -83,7 +83,7 @@ The program uses a `config.json` file to store browser and collection informatio
 
 ## Browsers Notes
 
-if you don't where is your browser profile path you can read this:
+if you don't know where is your browser profile path you can read this:
 
 windows:
 
