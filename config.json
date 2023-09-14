@@ -1,0 +1,12 @@
+{
+  "browsers": {
+    "firefox": {
+      "excitable_path": "",
+      "profile_path": ""
+    },
+    "edge": {
+      "excitable_path": ""
+    }
+  },
+  "collections": {}
+}
