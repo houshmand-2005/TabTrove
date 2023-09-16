@@ -54,6 +54,7 @@ You can run the program by executing the `tabtrove.py` script. It provides a men
 
 1. **Open a Collection:** Open a previously created collection of URLs in your web browser.
 2. **Add a Collection:** Create a new collection of URLs.
+3. **Delete a Collection:** Delete selected collection.
 
 Follow the on-screen prompts to use the program effectively.
 
