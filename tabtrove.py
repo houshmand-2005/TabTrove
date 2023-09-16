@@ -19,13 +19,6 @@ base_config = {
 }
 
 
-def create_valid_config() -> None:
-    """still in progress"""
-    with open("config.json", "w", encoding="utf-8") as config_file:
-        config_file.write(json.dumps(base_config, indent=2))
-    read_config_file.cache_clear()
-
-
 @lru_cache()
 def read_config_file() -> dict | None:
     """read config file"""
@@ -46,7 +39,7 @@ def read_config_file() -> dict | None:
             )
             sys.exit()
     else:
-        create_valid_config()
+        save_changes(base_config)
         return None
 
 
@@ -155,6 +148,13 @@ def show_collections() -> str:
     return collection_names[int(choice) - 1]
 
 
+def save_changes(output: str) -> None:
+    """save the changes into the file"""
+    with open("config.json", "w", encoding="utf-8") as config_file:
+        config_file.write(json.dumps(output, indent=2))
+    read_config_file.cache_clear()
+
+
 def add_collection() -> None:
     """Add a Collection"""
     existing_data = read_config_file()
@@ -173,9 +173,7 @@ def add_collection() -> None:
             pass
         case _:
             sys.exit()
-    with open("config.json", "w", encoding="utf-8") as config_file:
-        config_file.write(json.dumps(existing_data, indent=2))
-    read_config_file.cache_clear()
+    save_changes(existing_data)
 
 
 def open_collection() -> None:
@@ -193,14 +191,43 @@ def open_collection() -> None:
         console.print("[red][bold]Your Browser Path Is Wrong![/bold][/red]")
 
 
-console.print("1) Open a Collection\n2) Add a Collection")
-console.rule()
-MENU_CHOICE = Prompt.ask(
-    "Enter the number",
-    choices=["1", "2"],
-)
-match MENU_CHOICE:
-    case "1":
-        open_collection()
-    case "2":
-        add_collection()
+def delete_collection():
+    """Delete a Collection"""
+    json_parsed_data = read_config_file()
+    console.clear()
+    selected_collection = show_collections()
+    show_titles(selected_collection)
+    console.rule()
+    choice = Prompt.ask(
+        f"Are You Sure To Delete [bold]{selected_collection}[/bold] Collection",
+        choices=["y", "n"],
+    )
+    match choice.lower():
+        case "y":
+            pass
+        case _:
+            sys.exit()
+    json_parsed_data["collections"].pop(selected_collection)
+    save_changes(json_parsed_data)
+
+
+while True:
+    console.print(
+        "1) Open a Collection\n2) Add a Collection"
+        + "\n3) Delete a Collection\n4) Quit"
+    )
+    console.rule()
+    MENU_CHOICE = Prompt.ask(
+        "Enter the number",
+        choices=["1", "2", "3", "4"],
+    )
+    match MENU_CHOICE:
+        case "1":
+            open_collection()
+        case "2":
+            add_collection()
+        case "3":
+            delete_collection()
+        case "4":
+            break
+    console.clear()
